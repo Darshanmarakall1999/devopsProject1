@@ -16,14 +16,14 @@ pipeline {
             steps{
                 nexusArtifactUploader artifacts:[
                    [
-                        artifactId: 'realestate',
+                        artifactId: 'realestate1',
                        classifier: '',
                        file: 'realestate/target/realestate-0.0.1-SNAPSHOT.jar',
                       type: 'jar'
                  ]
              ],
                    credentialsId: 'e2a1a938-99b3-41d8-a224-cb5dcb715cad',
-                   groupId: 'torryharrisproject_1',
+                   groupId: 'torryharrisproject_2',
                    nexusUrl: '3.133.254.46:8081/',
                    nexusVersion: 'nexus3',
                    protocol: 'http',
