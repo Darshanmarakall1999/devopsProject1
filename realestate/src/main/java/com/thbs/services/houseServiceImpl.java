@@ -1,6 +1,5 @@
 package com.thbs.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,6 +55,11 @@ public class houseServiceImpl implements houseServices {
 		
 		Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
 		return this.houseRepository.findAll(pageable);
+	}
+	@Override
+	public Optional<house> getAEmployee(int pid) {
+		// TODO Auto-generated method stub
+		return houseRepository.findById(pid);
 	}
 
 }

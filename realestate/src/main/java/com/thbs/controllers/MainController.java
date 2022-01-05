@@ -55,5 +55,15 @@ public class MainController {
 	public String updateProperty() {
 		return "update_employee";
 	}
+	
+	@RequestMapping(value = "/newProperty")
+	public String newProperty() {
+		return "new_employee";
+	}
+	
+	@RequestMapping(value = "/search")
+	public String search() {
+		return "search";
+	}
 
 }

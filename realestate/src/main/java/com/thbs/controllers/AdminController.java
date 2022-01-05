@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +33,7 @@ public class AdminController {
 			if (a.getPassword().equals(userFromDb.getPassword())) {
 				List<house> listProducts = houseService.getAllEmployees();
 				model.addAttribute("listProducts", listProducts);
-				return "admin_options";
+				return "index1";
 			} else {
 				return "admin";
 			}
@@ -78,5 +79,33 @@ public class AdminController {
 		this.houseService.deleteEmployeeById(pid);
 		return "redirect:/homepage";
 	}
+	@GetMapping(value = "/searchProperty/")
+	public String search(@PathVariable(value = "pid") int pid, Model model) {
+		/* Optional<house> listProducts = houseService.getAEmployee(pid); */
+		model.addAttribute("listProducts", houseService.getAEmployee(pid));
+		return "index2";
+	}
+	@GetMapping(value = "/search1")
+	public String view(Model model) {
+		house house = new house();
+		model.addAttribute("house", house);
+		return "search";
+	}
+	
+	
+
+	  @Query("select * from houedetails c where c.address like %?h")
+	  @GetMapping("/testing/{pid}")
+	  public String serchTest(Model model, int pid) {
+	  Optional<house> listProducts = houseService.getAEmployee(pid);
+	  model.addAttribute("listProducts", listProducts);
+	  return "index2";
+	  }
+	 
+	
+	
+	
+	
+	
 
 }

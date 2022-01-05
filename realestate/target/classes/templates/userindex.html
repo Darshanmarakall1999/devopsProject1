@@ -36,8 +36,9 @@ div {
   background-color: #f2f2f2;
   padding: 10px;
   width:100%;
-  margin:auto auto auto;
+  margin:auto auto;
 }
+.container my-2{margin-top:10%;margin-left:5%;marginright:5%}
 .btn-group button {
   background-color: blue; /* Green background */
   border: 1px solid green; /* Green border */
@@ -69,14 +70,13 @@ div {
     <div class="btn-group">
 	<div class="container my-2">
 	<h1>Property List</h1>
-	<form action="/showNewEmployeeForm" >
-	<button class="btn btn-primary btn-sm mb-3" type="submit">Add property</button>
-	</form>
-	<form action="/testing{pid}" >
+	<form action="/search1" >
 	<button class="btn btn-primary btn-sm mb-3" type="submit">search</button>
 	</form>
+	<form action="/purchase" >
+	<button class="btn btn-primary btn-sm mb-3" type="submit">Purchase</button>
+	</form>
 	
-	<!--<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for ID's'..">-->
 		<table id="MyTable" class="customers" border="3"  >
 			<thead>
 				<tr class="header">
@@ -87,11 +87,10 @@ div {
 					<th>Size_sqft</th>
 					<th>Price</th>
 					<th>contactNumber</th>
-					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr id="tr" th:each="house : ${listProducts}">
+				<tr th:each="house : ${listProducts}">
 					<td th:text="${house.pid}"></td>
 					<td th:text="${house.address}"></td>
 					<td th:text="${house.bedrooms}"></td>
@@ -99,39 +98,19 @@ div {
 					<td th:text="${house.size_sqft}"></td>
 					<td th:text="${house.price}"></td>
 					<td th:text="${house.ownercontactnumber}"></td>
-					<td><a th:href="@{/showFormForUpdate/{pid}(pid=${house.pid})}" class="btn btn-primary">Update</a>
-					    <a th:href="@{/deleteEmployee/{pid}(pid=${house.pid})}" class="btn btn-danger">Delete</a>
 				</td>
-				</tr>
 			</tbody>
 		</table>
 	</div>
-	<form action="/" >
-	<button class="btn btn-primary btn-sm mb-3" type="submit">Logout</button>
+	<form action="/">
+	<button onclick="myFunction()" class="btn btn-primary btn-sm mb-3">Logout</button>
 	</form>
 	</div>
-	<script>
-  function myFunction() {
-  // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementById("tr");
-
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 1; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
+<script>
+function myFunction() {
+  alert("Logout successfully...");
 }
 </script>
+	
 </body>
 </html>

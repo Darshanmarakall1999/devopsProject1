@@ -1,13 +1,13 @@
 package com.thbs.services;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import com.thbs.models.house;
-
-import antlr.collections.List;
 //asdfgfredfcd
 @Service
 public interface houseServices  {
@@ -20,6 +20,11 @@ public interface houseServices  {
 	void deleteEmployeeById(int pid);
 	
 	Page<house> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection);
+	Optional<house> getAEmployee(int pid);
 	
+	/*
+	 * @Query("Select * from housedetails where pid=") public List<house>
+	 * search(String keyword);
+	 */
 
 }

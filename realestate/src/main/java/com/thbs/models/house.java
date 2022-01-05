@@ -1,5 +1,6 @@
 package com.thbs.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -8,12 +9,19 @@ import javax.persistence.Table;
 @Table(name="housedetails")
 public class house {
 	@Id
+	@Column(name="pid")
 	private int pid;
+	@Column(name="address")
 	private String address;
+	@Column(name="bedrooms")
 	private int bedrooms;
+	@Column(name="bathrooms")
 	private int bathrooms;
+	@Column(name="size_sqft")
 	private int size_sqft;
+	@Column(name="price")
 	private int price;
+	@Column(name="ownercontactnumber")
 	private String ownercontactnumber;
 	public house(int pid, String address, int bedrooms, int bathrooms, int size_sqft, int price,
 			String ownercontactnumber) {
